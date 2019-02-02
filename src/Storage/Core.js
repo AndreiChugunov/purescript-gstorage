@@ -24,11 +24,12 @@ exports._uploadFile = function(errCB, scCB, storage, bucketName, filename) {
     }; 
 };
 
+// url will no be avaliable in 10 mins.
 exports._generateSignedUrl = function (errCB, scCB, storage, bucketName, filename) {
     return function () {
         const options = {
             action: 'read',
-            expires: Date.now() + 60 * 60,
+            expires: Date.now() + 10 * 60 * 1000,
         };
         const url = storage
         .bucket(bucketName)
